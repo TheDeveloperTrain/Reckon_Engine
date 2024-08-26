@@ -1,0 +1,28 @@
+Re-Serialized scene
+-hierarchy
+--root
+id: 0
+parent id: -1
+children: 1
+--SceneObject
+name: root
+id: 0
+parent id: -1
+children: 1
+gameobject:
+    transform: 
+     position: 0.000000 0.000000 0.000000
+     rotation: 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 
+     scale: 1.000000 1.000000 1.000000
+--
+--SceneObject
+name: Demo object
+id: 1
+parent id: 0
+children: 
+gameobject:
+    transform: 
+     position: 0.400000 0.600000 0.400000
+     rotation: 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 
+     scale: 1.000000 1.000000 1.000000
+--
