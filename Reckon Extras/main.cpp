@@ -1,0 +1,5 @@
+#include <ReckonEngine.h>
+int main(int argc, char** argv)
+{
+	ReckonEngine::Init();
+}
