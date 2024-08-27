@@ -3,12 +3,12 @@ TestScene
 --root
 id: 0
 parent id: -1
-children: 1
+children: 2
 --SceneObject
 name: root
-id: 0
+id: 1
 parent id: -1
-children: 1
+children: 2
 gameobject:
     transform: 
      position: 0.000000 0.000000 0.000000
@@ -17,12 +17,12 @@ gameobject:
 --
 --SceneObject
 name: Demo object
-id: 1
-parent id: 0
+id: 2
+parent id: 1
 children: 
 gameobject:
     transform: 
-     position: 0.400000 0.600000 0.400000
+     position: 0.400000 0.600000 0.600000
      rotation: 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 0.000000 0.000000 0.000000 0.000000 1.000000 
      scale: 1.000000 1.000000 1.000000
 --
