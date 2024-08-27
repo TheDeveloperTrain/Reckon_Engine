@@ -1,9 +1,10 @@
 #pragma once
 #include "Component.h"
-#include "Mesh.h"
+#include <Game Core/Mesh.h>
 class MeshRenderer : public Component
 {
 public:
+	MeshRenderer();
 	Mesh mesh;
 	
 };

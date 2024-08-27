@@ -2,7 +2,9 @@
 #include <ReckonCore.h>
 enum class ComponentType
 {
-	Transform
+	Transform,
+	Camera,
+	MeshRenderer
 };
 
 

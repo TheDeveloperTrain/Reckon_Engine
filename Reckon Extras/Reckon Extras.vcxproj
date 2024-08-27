@@ -141,20 +141,21 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="Game Core\Component.cpp" />
+    <ClCompile Include="Game Core\Components\Camera.cpp" />
+    <ClCompile Include="Game Core\Components\Component.cpp" />
     <ClCompile Include="Configuration.cpp" />
     <ClCompile Include="Game Core\GameObject.cpp" />
     <ClCompile Include="GameRegistry.cpp" />
     <ClCompile Include="glad.c" />
     <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Game Core\MeshRenderer.cpp" />
+    <ClCompile Include="Game Core\Components\MeshRenderer.cpp" />
     <ClCompile Include="Game Core\Mesh.cpp" />
     <ClCompile Include="Game Core\Material.cpp" />
     <ClCompile Include="ReckonBase.cpp" />
     <ClCompile Include="ReckonEngine.cpp" />
     <ClCompile Include="Game Core\Scene.cpp" />
-    <ClCompile Include="Game Core\Transform.cpp" />
+    <ClCompile Include="Game Core\Components\Transform.cpp" />
     <ClCompile Include="Game Core\SceneObject.cpp" />
     <ClCompile Include="Game Core\SceneSettings.cpp" />
     <ClCompile Include="SerializationManager.cpp" />
@@ -162,21 +163,22 @@
     <ClCompile Include="OpenGL Based\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Game Core\Component.h" />
+    <ClInclude Include="Game Core\Components\Camera.h" />
+    <ClInclude Include="Game Core\Components\Component.h" />
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Game Core\GameObject.h" />
     <ClInclude Include="GameRegistry.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="internal Dependencies\glfw3.h" />
     <ClInclude Include="internal Dependencies\glfw3native.h" />
-    <ClInclude Include="Game Core\MeshRenderer.h" />
+    <ClInclude Include="Game Core\Components\MeshRenderer.h" />
     <ClInclude Include="Game Core\Mesh.h" />
     <ClInclude Include="Game Core\Material.h" />
     <ClInclude Include="ReckonBase.h" />
     <ClInclude Include="ReckonCore.h" />
     <ClInclude Include="ReckonEngine.h" />
     <ClInclude Include="Game Core\Scene.h" />
-    <ClInclude Include="Game Core\Transform.h" />
+    <ClInclude Include="Game Core\Components\Transform.h" />
     <ClInclude Include="Game Core\SceneObject.h" />
     <ClInclude Include="Game Core\SceneSettings.h" />
     <ClInclude Include="SerializationManager.h" />

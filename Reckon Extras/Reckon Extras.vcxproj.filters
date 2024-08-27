@@ -42,10 +42,10 @@
     <ClCompile Include="Game Core\GameObject.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game Core\Component.cpp">
+    <ClCompile Include="Game Core\Components\Component.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game Core\Transform.cpp">
+    <ClCompile Include="Game Core\Components\Transform.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game Core\SceneObject.cpp">
@@ -57,7 +57,7 @@
     <ClCompile Include="Game Core\SceneSettings.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Game Core\MeshRenderer.cpp">
+    <ClCompile Include="Game Core\Components\MeshRenderer.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game Core\Mesh.cpp">
@@ -70,6 +70,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="OpenGL Based\ShaderManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Game Core\Components\Camera.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -104,10 +107,10 @@
     <ClInclude Include="Game Core\GameObject.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game Core\Component.h">
+    <ClInclude Include="Game Core\Components\Component.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game Core\Transform.h">
+    <ClInclude Include="Game Core\Components\Transform.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game Core\SceneObject.h">
@@ -119,7 +122,7 @@
     <ClInclude Include="Game Core\SceneSettings.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Game Core\MeshRenderer.h">
+    <ClInclude Include="Game Core\Components\MeshRenderer.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game Core\Mesh.h">
@@ -138,6 +141,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="OpenGL Based\ShaderManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Game Core\Components\Camera.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
