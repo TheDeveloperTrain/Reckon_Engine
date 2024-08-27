@@ -73,7 +73,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LibraryPath>$(SolutionDir)dependencies\libs;$(LibraryPath)</LibraryPath>
-    <IncludePath>D:\Reckon Engine\Reckon Extras\dependencies\include;$(SolutionDir)Reckon Extras\;$(SolutionDir)dependencies\include;$(IncludePath)</IncludePath>
+    <IncludePath>D:\Reckon Engine\Reckon Engine\dependencies\include;$(SolutionDir)Reckon Engine\;$(SolutionDir)dependencies\include;$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>D:\Reckon Engine\Reckon Extras\dependencies\include;$(SolutionDir)Reckon Extras\;$(SolutionDir)dependencies\include;$(IncludePath)</IncludePath>
