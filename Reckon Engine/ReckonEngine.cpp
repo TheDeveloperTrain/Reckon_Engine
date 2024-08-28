@@ -59,6 +59,7 @@ void ReckonEngine::Init()
         glfwTerminate();
         return;
     }
+    glEnable(GL_DEPTH_TEST);
 
     glfwSetFramebufferSizeCallback(window, framebuffer_size_callback);
 
@@ -71,24 +72,24 @@ void ReckonEngine::Init()
 
     GameRegistry::CallStart();
     const float durationBetweenFrames = 1.0f / Configuration::framesInFixedUpdate;
-    float lastFrame = glfwGetTime();
-    float deltaTime = 0.0f;
+    double lastFrame = glfwGetTime();
+    double deltaTime = 0.0f;
     float lastFixedUpdate = glfwGetTime();
     float speed = 5.0f;
 
     while (!glfwWindowShouldClose(window))
     {
-        float currentFrame = static_cast<float>(glfwGetTime());
+        double currentFrame = glfwGetTime();
         deltaTime = currentFrame - lastFrame;
         lastFrame = currentFrame;
 
         glfwPollEvents();
 
-        if (glfwGetTime() - lastFixedUpdate > durationBetweenFrames)
-        {
-            GameRegistry::CallFixedUpdate();
-            lastFixedUpdate = glfwGetTime();
-        }
+        //if (glfwGetTime() - lastFixedUpdate > durationBetweenFrames)
+        //{
+        //    GameRegistry::CallFixedUpdate();
+        //    lastFixedUpdate = glfwGetTime();
+        //}
         GameRegistry::CallUpdate(deltaTime);
 
         // Clear the viewport area

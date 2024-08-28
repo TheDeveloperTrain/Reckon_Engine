@@ -161,6 +161,9 @@
     <ClCompile Include="SerializationManager.cpp" />
     <ClCompile Include="OpenGL Based\ShaderManager.cpp" />
     <ClCompile Include="OpenGL Based\Texture.cpp" />
+    <ClCompile Include="Wrappers\vectors\vec2.cpp" />
+    <ClCompile Include="Wrappers\vectors\vec4.cpp" />
+    <ClCompile Include="Wrappers\vectors\vec3.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Game Core\Components\Camera.h" />
@@ -186,6 +189,14 @@
     <ClInclude Include="OpenGL Based\ShaderManager.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="OpenGL Based\Texture.h" />
+    <ClInclude Include="Wrappers\vectors\vec2.h" />
+    <ClInclude Include="Wrappers\vectors\vec4.h" />
+    <ClInclude Include="Wrappers\vectors\vec3.h" />
+    <ClInclude Include="Wrappers\vectors\VectorWrappers.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="OpenGL Based\Basic Shaders\BasicUntlitFragmentShader.txt" />
+    <Text Include="OpenGL Based\Basic Shaders\BasicUnlitVertexShader.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -7,7 +7,7 @@ class RCK_API GameRegistry
 public:
 	static void RegisterClass(ReckonBase* reckonClass);
 	static void CallStart();
-	static void CallUpdate(int deltaTime);
+	static void CallUpdate(float deltaTime);
 	static void CallFixedUpdate();
 private:
 	static std::list<ReckonBase*> registeredClasses;

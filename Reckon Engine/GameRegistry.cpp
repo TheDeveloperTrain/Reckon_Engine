@@ -15,7 +15,7 @@ void GameRegistry::CallStart()
 		classes->Start();
 	}
 }
-void GameRegistry::CallUpdate(int deltaTime)
+void GameRegistry::CallUpdate(float deltaTime)
 {
 	for (const auto& classes : registeredClasses)
 	{
