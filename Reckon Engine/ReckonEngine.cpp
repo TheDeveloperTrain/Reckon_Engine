@@ -27,19 +27,15 @@ void ReckonEngine::Init()
     }
 
     Scene scene = Scene();
-    scene.name = "TestScene";
+    char splitString[10] = "TestScene";
+    scene.name = splitString;
     std::shared_ptr<SceneObject> so = scene.CreateGameObject();
     so->object.name = "Demo object";
-    so->object.transform.position = glm::vec3(0.4f, 0.6f, 0.6f);
+    so->object.transform.position = glm::vec3(0.4f, 0.6f, 0.6f); 
     SerializationManager::SerializeScene(scene);
 
-    Scene Deserializedscene = SerializationManager::DeserializeScene("TestScene.scene");
-    currentScene = Deserializedscene;
-    SceneSettings currentSettings = Deserializedscene.settings;
-
-    //integrity test
-    Deserializedscene.name = "Re-Serialized scene";
-    SerializationManager::SerializeScene(Deserializedscene);
+    currentScene = scene;
+    SceneSettings currentSettings = scene.settings;
 
 
     glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 3);

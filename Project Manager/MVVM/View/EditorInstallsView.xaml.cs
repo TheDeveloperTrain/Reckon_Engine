@@ -86,10 +86,8 @@ namespace Project_Manager.MVVM.View
                 Console.WriteLine("Message :{0} ", e.Message);
             }
 
-            //return availableEditors;
-            List<Tuple<string, string>> test = new List<Tuple<string, string>>();
-            test.Add(new Tuple<string, string>($"Reckon Editor v0.1.5}",  ));
-            
+            return availableEditors;
+
         }
 
         // Handles the download of the selected editor

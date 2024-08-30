@@ -53,7 +53,7 @@ int CountLinesInDirectory(const fs::path& directoryPath) {
 
 int main() {
 
-    fs::path pathToSearch("/../");
+    fs::path pathToSearch("D:\\Reckon Engine\\Reckon Engine\\Reckon Extras clone without dependencies");
 
     if (!fs::exists(pathToSearch) || !fs::is_directory(pathToSearch)) {
         std::cerr << "Error: Invalid directory path." << std::endl;

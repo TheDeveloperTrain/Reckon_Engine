@@ -1,47 +1,92 @@
 #include "vec3.h"
 
-namespace DLL_WRAPPERS {
+namespace DLL_wrappers {
 
-    vec3::vec3(float x, float y, float z)
+    vec3::vec3(float _x, float _y, float _z)
     {
         vec = glm::vec3(x, y, z);
+        x = _x;
+        y = _y;
+        z = _z;
     }
 
     vec3::vec3(glm::vec3 vector)
     {
         vec = vector;
+        x = vector.x;
+        y = vector.y;
+        z = vector.z;
     }
 
     float vec3::GetX() const
     {
-        return vec.x;
+        return x;
     }
 
     float vec3::GetY() const
     {
-        return vec.y;
+        return y;
     }
 
     float vec3::GetZ() const
     {
-        return vec.z;
+        return z;
     }
 
-    void vec3::SetX(float x)
+    float vec3::GetR() const
     {
-        vec.x = x;
+        return r;
     }
 
-    void vec3::SetY(float y)
+    float vec3::GetG() const
     {
-        vec.y = y;
+        return g;
     }
 
-    void vec3::SetZ(float z)
+    float vec3::GetB() const
     {
-        vec.z = z;
+        return b;
     }
 
+    void vec3::SetX(float _x)
+    {
+        vec.x = _x;
+        x = _x;
+
+    }
+
+    void vec3::SetY(float _y)
+    {
+        vec.y = _y;
+        y = _y;
+    }
+
+    void vec3::SetZ(float _z)
+    {
+        vec.z = _z;
+        z = _z;
+    }
+
+    void vec3::SetR(float _r)
+    {
+        vec.r = _r;
+        r = _r;
+        x = _r;
+    }
+
+    void vec3::SetG(float _g)
+    {
+        vec.g = _g;
+        g = _g;
+        y = _g;
+    }
+
+    void vec3::SetB(float _b)
+    {
+        vec.b = _b;
+        b = _b;
+        z = _b;
+    }
     // Operator Overloads
     vec3 vec3::operator+(const vec3& other) const
     {

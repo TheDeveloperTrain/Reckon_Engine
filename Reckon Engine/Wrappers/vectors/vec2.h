@@ -1,7 +1,7 @@
 #include <glm/glm.hpp>
 #include <ReckonCore.h>
 
-namespace DLL_WRAPPERS
+namespace DLL_wrappers
 {
 
     class RCK_API vec2
@@ -12,13 +12,27 @@ namespace DLL_WRAPPERS
         vec2(float x = 0.0f, float y = 0.0f);
         vec2(glm::vec2 vector);
 
+        //individual positional components
+        float x = 0.0f;
+        float y = 0.0f;
+
+        // colour alternatives
+        float r = 0.0f;
+        float g = 0.0f;
+
         // Getters
         float GetX() const;
         float GetY() const;
 
+        float GetR() const;
+        float GetG() const;
+
         // Setters
         void SetX(float x);
         void SetY(float y);
+
+        void SetR(float r);
+        void SetG(float g);
 
         // Operators
         vec2 operator+(const vec2& other) const;

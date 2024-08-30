@@ -1,10 +1,10 @@
 #pragma once
 #include <ReckonCore.h>
-#include <glm/glm.hpp>
+#include <Wrappers/vectors/VectorWrappers.h>
 class RCK_API SceneSettings
 {
 public:
 	SceneSettings();
-	glm::vec4 backgroundColor;
+	DLL_wrappers::vec4 backgroundColor;
 };
 

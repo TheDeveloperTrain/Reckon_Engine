@@ -1,6 +1,6 @@
 #include "vec2.h"
 
-namespace DLL_WRAPPERS {
+namespace DLL_wrappers {
 
     vec2::vec2(float x, float y)
     {
@@ -22,6 +22,16 @@ namespace DLL_WRAPPERS {
         return vec.y;
     }
 
+    float vec2::GetR() const
+    {
+        return r;
+    }
+
+    float vec2::GetG() const
+    {
+        return g;
+    }
+
     void vec2::SetX(float x)
     {
         vec.x = x;
@@ -30,6 +40,20 @@ namespace DLL_WRAPPERS {
     void vec2::SetY(float y)
     {
         vec.y = y;
+    }
+
+    void vec2::SetR(float _r)
+    {
+        vec.r = _r;
+        r = _r;
+        x = _r;
+    }
+
+    void vec2::SetG(float _g)
+    {
+        vec.g = _g;
+        g = _g;
+        y = _g;
     }
 
     // Operator Overloads
