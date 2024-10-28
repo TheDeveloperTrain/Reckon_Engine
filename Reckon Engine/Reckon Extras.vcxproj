@@ -114,6 +114,7 @@
       <PreprocessorDefinitions>RCK_BUILD_DLL;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
+      <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -161,6 +162,9 @@
     <ClCompile Include="SerializationManager.cpp" />
     <ClCompile Include="OpenGL Based\ShaderManager.cpp" />
     <ClCompile Include="OpenGL Based\Texture.cpp" />
+    <ClCompile Include="Wrappers\matrices\mat2.cpp" />
+    <ClCompile Include="Wrappers\matrices\mat3.cpp" />
+    <ClCompile Include="Wrappers\matrices\mat4.cpp" />
     <ClCompile Include="Wrappers\vectors\vec2.cpp" />
     <ClCompile Include="Wrappers\vectors\vec4.cpp" />
     <ClCompile Include="Wrappers\vectors\vec3.cpp" />
@@ -189,6 +193,9 @@
     <ClInclude Include="OpenGL Based\ShaderManager.h" />
     <ClInclude Include="stb_image.h" />
     <ClInclude Include="OpenGL Based\Texture.h" />
+    <ClInclude Include="Wrappers\matrices\mat2.h" />
+    <ClInclude Include="Wrappers\matrices\mat3.h" />
+    <ClInclude Include="Wrappers\matrices\mat4.h" />
     <ClInclude Include="Wrappers\vectors\vec2.h" />
     <ClInclude Include="Wrappers\vectors\vec4.h" />
     <ClInclude Include="Wrappers\vectors\vec3.h" />
