@@ -12,5 +12,6 @@ class RCK_API Component
 {
 public:
 	ComponentType type;
+	virtual ~Component() = default;
 };
 

@@ -1,54 +1,59 @@
 #include <glm/glm.hpp>
 #include <ReckonCore.h>
+#include <string>
 
 namespace DLL_wrappers
 {
 
-    class RCK_API vec2
-    {
+	class RCK_API vec2
+	{
 
-    public:
-        // Constructor
-        vec2(float x = 0.0f, float y = 0.0f);
-        vec2(glm::vec2 vector);
+	public:
+		// Constructor
+		vec2(float x = 0.0f, float y = 0.0f);
+		vec2(glm::vec2 vector);
 
-        //individual positional components
-        float x = 0.0f;
-        float y = 0.0f;
+		//individual positional components
+		float x = 0.0f;
+		float y = 0.0f;
 
-        // colour alternatives
-        float r = 0.0f;
-        float g = 0.0f;
+		// colour alternatives
+		float r = 0.0f;
+		float g = 0.0f;
 
-        // Getters
-        float GetX() const;
-        float GetY() const;
+		// Getters
+		float GetX() const;
+		float GetY() const;
 
-        float GetR() const;
-        float GetG() const;
+		float GetR() const;
+		float GetG() const;
 
-        // Setters
-        void SetX(float x);
-        void SetY(float y);
+		glm::vec2 GetVector() const;
 
-        void SetR(float r);
-        void SetG(float g);
+		// Setters
+		void SetX(float x);
+		void SetY(float y);
 
-        // Operators
-        vec2 operator+(const vec2& other) const;
-        vec2 operator-(const vec2& other) const;
-        vec2& operator+=(const vec2& other);
-        vec2& operator-=(const vec2& other);
-        vec2 operator*(float scalar) const;
-        vec2& operator*=(float scalar);
+		void SetR(float r);
+		void SetG(float g);
 
-        bool operator==(const vec2& other) const;
-        bool operator!=(const vec2& other) const;
+		// Operators
+		vec2 operator+(const vec2& other) const;
+		vec2 operator-(const vec2& other) const;
+		vec2& operator+=(const vec2& other);
+		vec2& operator-=(const vec2& other);
+		vec2 operator*(float scalar) const;
+		vec2& operator*=(float scalar);
 
-        // Length
-        float Length() const;
+		bool operator==(const vec2& other) const;
+		bool operator!=(const vec2& other) const;
 
-    private:
-        glm::vec2 vec;
-    };
+		// Length
+		float Length() const;
+
+		std::string ToString() const;
+
+	private:
+		glm::vec2 vec;
+	};
 }

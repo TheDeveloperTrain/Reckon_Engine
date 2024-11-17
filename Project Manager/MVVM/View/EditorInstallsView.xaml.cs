@@ -15,7 +15,9 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Shapes;    
+using System.IO.Compression;
+using IWshRuntimeLibrary;
 
 namespace Project_Manager.MVVM.View
 {
@@ -52,7 +54,7 @@ namespace Project_Manager.MVVM.View
             }
 
             // Show the ContextMenu
-            Button button = sender as Button;
+            Button? button = sender as Button;
             button.ContextMenu = contextMenu;
             contextMenu.IsOpen = true;
         }
@@ -91,22 +93,76 @@ namespace Project_Manager.MVVM.View
         }
 
         // Handles the download of the selected editor
-        private void DownloadEditor_Click(object sender, RoutedEventArgs e)
+        private async void DownloadEditor_Click(object sender, RoutedEventArgs e)
         {
             if (sender is MenuItem menuItem)
             {
-                string editorName = menuItem.Header.ToString();
-                string downloadUri = menuItem.Tag.ToString();
+                string? editorName = menuItem.Header.ToString();
+                string? downloadUri = menuItem.Tag.ToString();
 
-                // Implement your download logic here
-                MessageBox.Show($"Starting download for {editorName} from {downloadUri}");
-                // You can add the actual download code here
+                // Define paths
+                string zipFilePath = System.IO.Path.Combine("Editor Info", $"{editorName}.zip");
+                string extractPath = System.IO.Path.Combine("Editor Info", editorName);
+
+                try
+                {
+                    // Download the ZIP file
+                    using (HttpClient client = new HttpClient())
+                    using (HttpResponseMessage response = await client.GetAsync(downloadUri))
+                    {
+                        response.EnsureSuccessStatusCode();
+                        using (var fs = new FileStream(zipFilePath, System.IO.FileMode.Create))
+                        {
+                            await response.Content.CopyToAsync(fs);
+                        }
+                    }
+
+                    // Extract the ZIP file
+                    ZipFile.ExtractToDirectory(zipFilePath, extractPath);
+
+                    // Locate the executable file
+                    string? exePath = System.IO.Directory.GetFiles(extractPath, "*.exe", SearchOption.AllDirectories).FirstOrDefault();
+                    if (exePath == null)
+                    {
+                        MessageBox.Show("Executable file not found after extraction.");
+                        return;
+                    }
+
+                    // Create a desktop shortcut
+                    string desktopPath = Environment.GetFolderPath(Environment.SpecialFolder.Desktop);
+                    string shortcutPath = System.IO.Path.Combine(desktopPath, $"{editorName}.lnk");
+                    CreateShortcut(shortcutPath, exePath, editorName);
+
+                    MessageBox.Show($"Successfully downloaded and installed {editorName}. Shortcut created on the desktop.");
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"An error occurred: {ex.Message}");
+                }
+                finally
+                {
+                    // Cleanup ZIP file after extraction
+                    if (System.IO.File.Exists(zipFilePath))
+                    {
+                        System.IO.File.Delete(zipFilePath);
+                    }
+                }
             }
         }
 
+        private void CreateShortcut(string shortcutPath, string targetPath, string shortcutDescription)
+        {
+            var shell = new WshShell();
+            IWshShortcut shortcut = (IWshShortcut)shell.CreateShortcut(shortcutPath);
+            shortcut.Description = shortcutDescription;
+            shortcut.TargetPath = targetPath;
+            shortcut.Save();
+        }
+
+
         private void InitializeAvailableEditors()
         {
-            var editorFileContent = File.ReadAllLines("Editor Info/Editor Saves.txt");
+            var editorFileContent = System.IO.File.ReadAllLines("Editor Info/Editor Saves.txt");
             int index = 0;
             foreach (string editor in editorFileContent)
             {
@@ -129,13 +185,13 @@ namespace Project_Manager.MVVM.View
 
         private void InitWorkingDirectories()
         {
-            if (!Directory.Exists("Editor Info"))
+            if (!System.IO.Directory.Exists("Editor Info"))
             {
-                Directory.CreateDirectory("Editor Info");
+                System.IO.Directory.CreateDirectory("Editor Info");
             }
-            if (!File.Exists("Editor Info/Editor Saves.txt"))
+            if (!System.IO.File.Exists("Editor Info/Editor Saves.txt"))
             {
-                FileStream file = File.Create("Editor Info/Editor Saves.txt");
+                FileStream file = System.IO.File.Create("Editor Info/Editor Saves.txt");
                 file.Close();
             }
         }
@@ -146,7 +202,7 @@ namespace Project_Manager.MVVM.View
             listBoxItem.Content = $"Reckon Editor v{version}";
             listBoxItem.Padding = new Thickness(10);
             listBoxItem.Margin = new Thickness(0, 0, 0, 10);
-            listBoxItem.Background = (Brush)new BrushConverter().ConvertFrom("#2A2C3B");
+            listBoxItem.Background = (Brush?)new BrushConverter().ConvertFrom("#2A2C3B");
             return listBoxItem;
         }
     }

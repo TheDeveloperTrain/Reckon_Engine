@@ -115,6 +115,7 @@
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <AssemblerOutput>AssemblyAndSourceCode</AssemblerOutput>
+      <AdditionalOptions>-W4 %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -175,6 +176,7 @@
     <ClInclude Include="Configuration.h" />
     <ClInclude Include="Game Core\GameObject.h" />
     <ClInclude Include="GameRegistry.h" />
+    <ClInclude Include="glad_wrapper.h" />
     <ClInclude Include="Input.h" />
     <ClInclude Include="internal Dependencies\glfw3.h" />
     <ClInclude Include="internal Dependencies\glfw3native.h" />
@@ -196,12 +198,14 @@
     <ClInclude Include="Wrappers\matrices\mat2.h" />
     <ClInclude Include="Wrappers\matrices\mat3.h" />
     <ClInclude Include="Wrappers\matrices\mat4.h" />
+    <ClInclude Include="Wrappers\matrices\MatrixWrappers.h" />
     <ClInclude Include="Wrappers\vectors\vec2.h" />
     <ClInclude Include="Wrappers\vectors\vec4.h" />
     <ClInclude Include="Wrappers\vectors\vec3.h" />
     <ClInclude Include="Wrappers\vectors\VectorWrappers.h" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="OpenGL Based\Basic Shaders\BasicUnlitFragmentShader.txt" />
     <Text Include="OpenGL Based\Basic Shaders\BasicUntlitFragmentShader.txt" />
     <Text Include="OpenGL Based\Basic Shaders\BasicUnlitVertexShader.txt" />
   </ItemGroup>

@@ -1,66 +1,113 @@
-#include <iostream>
 #include <filesystem>
 #include <fstream>
+#include <iostream>
 #include <string>
 
 namespace fs = std::filesystem;
 
 int CountLinesInFile(const fs::path& filePath) {
-    std::ifstream file(filePath);
-    if (!file.is_open()) {
-        std::cerr << "Error: Unable to open file " << filePath << std::endl;
-        return 0;
-    }
+	std::ifstream file(filePath);
+	if (!file.is_open()) {
+		std::cerr << "Error: Unable to open file " << filePath << std::endl;
+		return 0;
+	}
 
-    int lineCount = 0;
-    std::string line;
-    while (std::getline(file, line)) {
-        lineCount++;
-    }
+	int lineCount = 0;
+	std::string line;
+	while (std::getline(file, line)) {
+		lineCount++;
+	}
 
-    return lineCount;
+	return lineCount;
 }
 
 int CountLinesInDirectory(const fs::path& directoryPath) {
-    int totalLines = 0;
+	int totalLines = 0;
 
-    try {
-        for (const auto& entry : fs::recursive_directory_iterator(directoryPath)) {
-            // Normalize path to avoid case sensitivity issues
-            if (entry.is_directory() && entry.path().filename().string() == "dependencies") {
-                continue; // Skip the "dependencies" directory
-            }
+	try {
+		for (const auto& entry : fs::recursive_directory_iterator(directoryPath)) {
+			// Normalize path to avoid case sensitivity issues
+			if (entry.is_directory() && entry.path().filename().string() == "dependencies") {
+				continue; // Skip the "dependencies" directory
+			}
 
-            if (entry.is_regular_file()) {
-                const fs::path& filePath = entry.path();
-                if (filePath.extension() == ".cpp" || filePath.extension() == ".h" || filePath.extension() == ".cs" || filePath.extension() == ".xaml") {
-                    int lines = CountLinesInFile(filePath);
-                    std::cout << "File: " << filePath << " - " << lines << " lines" << std::endl;
-                    totalLines += lines;
-                }
-            }
-        }
-    }
-    catch (const fs::filesystem_error& e) {
-        std::cerr << "Filesystem error: " << e.what() << std::endl;
-    }
-    catch (const std::exception& e) {
-        std::cerr << "General error: " << e.what() << std::endl;
-    }
+			if (entry.is_regular_file()) {
+				const fs::path& filePath = entry.path();
+				if (filePath.extension() == ".cpp" || filePath.extension() == ".h" || filePath.extension() == ".cs" || filePath.extension() == ".xaml") {
+					int lines = CountLinesInFile(filePath);
+					std::cout << "File: " << filePath << " - " << lines << " lines" << std::endl;
+					totalLines += lines;
+				}
+			}
+		}
+	}
+	catch (const fs::filesystem_error& e) {
+		std::cerr << "Filesystem error: " << e.what() << std::endl;
+	}
+	catch (const std::exception& e) {
+		std::cerr << "General error: " << e.what() << std::endl;
+	}
 
-    return totalLines;
+	return totalLines;
 }
+
+void CheckForStringInFile(const fs::path& filePath, std::string searchString) {
+	std::ifstream file(filePath);
+	if (!file.is_open()) {
+		std::cerr << "Error: Unable to open file " << filePath << std::endl;
+	}
+	std::string line; // Variable to hold each line
+	while (std::getline(file, line)) { // Read the file line by line
+		if (line.find(searchString) != std::string::npos) { // Check if the line contains the search string
+			file.close(); // Close the file
+			std::cout << "String Detected in file " << filePath << "in " << line << std::endl;
+		}
+	}
+
+	file.close(); // Close the file if done reading
+
+
+}
+
+void CheckForStringInDirectory(const fs::path& directoryPath, std::string searchString) {
+	try {
+		for (const auto& entry : fs::recursive_directory_iterator(directoryPath)) {
+			// Normalize path to avoid case sensitivity issues
+			if (entry.is_directory() && entry.path().filename().string() == "dependencies") {
+				continue; // Skip the "dependencies" directory
+			}
+
+			if (entry.is_regular_file()) {
+				const fs::path& filePath = entry.path();
+				if (filePath.extension() == ".cpp" || filePath.extension() == ".h" || filePath.extension() == ".cs" || filePath.extension() == ".xaml") {
+					CheckForStringInFile(filePath, searchString);
+				}
+			}
+		}
+	}
+	catch (const fs::filesystem_error& e) {
+		std::cerr << "Filesystem error: " << e.what() << std::endl;
+	}
+	catch (const std::exception& e) {
+		std::cerr << "General error: " << e.what() << std::endl;
+	}
+
+}
+
 
 int main() {
 
-    fs::path pathToSearch("D:\\Reckon Engine\\Reckon Engine\\Reckon Extras clone without dependencies");
+	fs::path pathToSearch("D:\\Reckon Engine\\Reckon Engine\\Reckon Extras clone without dependencies");
 
-    if (!fs::exists(pathToSearch) || !fs::is_directory(pathToSearch)) {
-        std::cerr << "Error: Invalid directory path." << std::endl;
-        return 1;
-    }
+	if (!fs::exists(pathToSearch) || !fs::is_directory(pathToSearch)) {
+		std::cerr << "Error: Invalid directory path." << std::endl;
+		return 1;
+	}
 
-    int totalLines = CountLinesInDirectory(pathToSearch);
-    std::cout << "Total lines of code in Reckon Engine: " << totalLines << std::endl;
-    return 0;
+	int totalLines = CountLinesInDirectory(pathToSearch);
+
+	std::cout << "Total lines of code in Reckon Engine: " << totalLines << std::endl;
+
+	CheckForStringInDirectory(pathToSearch, "glad/glad.h");
+	return 0;
 }

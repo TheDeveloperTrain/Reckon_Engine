@@ -6,17 +6,17 @@
 class RCK_API Scene
 {
 public:
-    Scene();
-    Scene(const char* sceneName);
-    ~Scene();
-    std::shared_ptr<SceneObject> CreateGameObject();
+	Scene();
+	Scene(const char* sceneName);
+	~Scene();
+	std::shared_ptr<SceneObject> CreateGameObject();
 
-    std::vector<SceneObject> GetSceneObjectsWithComponent(ComponentType component);
-    std::vector<SceneObject> GetAllSceneObjects(Scene scene);
-    std::vector<SceneObject> RecursivelyGetAllChilds(SceneObject object);
+	std::vector<SceneObject> GetSceneObjectsWithComponent(ComponentType component);
+	std::vector<SceneObject> GetAllSceneObjects(Scene scene);
+	std::vector<SceneObject> RecursivelyGetAllChildren(std::shared_ptr<SceneObject> object);
 
-    SceneSettings settings;
-    const char* name;
+	SceneSettings settings;
+	const char* name;
 
-    std::shared_ptr<SceneObject> root;
+	std::shared_ptr<SceneObject> root;
 };

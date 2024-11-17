@@ -1,32 +1,45 @@
 #include "GameObject.h"
+#include "Components/MeshRenderer.h"
 
 GameObject::GameObject()
 {
 	name = "null";
+	Transform _transform = Transform();
+	transform = std::make_shared<Transform>(_transform);
 }
-
 
 GameObject::GameObject(std::string _name)
 {
 	name = _name;
-}
-GameObject::GameObject(Transform initialTransform, std::string _name)
-{
-	transform = initialTransform;
+	Transform _transform = Transform();
+	transform = std::make_shared<Transform>(_transform);
 }
 
-std::optional<Component> GameObject::GetComponent(ComponentType type)
+GameObject::GameObject(Transform initialTransform, std::string _name)
 {
-	if (type == ComponentType::Transform)
+	name = _name;
+	transform = std::make_shared<Transform>(initialTransform);
+}
+
+
+// Component methods
+std::optional<Component*> GameObject::GetComponent(ComponentType type)
+{
+	if (type == ComponentType::Transform && transform)
 	{
-		return transform;
+		return transform.get();
 	}
-	for (Component component : components)
+	for (auto& component : components)
 	{
-		if (component.type == type)
+		if (component->type == type)
 		{
-			return component;
+			return component.get();
 		}
 	}
 	return std::nullopt;
+}
+
+void GameObject::AddComponent(std::shared_ptr<Component> component)
+{
+	components.push_back(std::move(component));
 }

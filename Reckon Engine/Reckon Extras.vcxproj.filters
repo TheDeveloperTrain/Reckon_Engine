@@ -185,9 +185,16 @@
     <ClInclude Include="Wrappers\matrices\mat3.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="glad_wrapper.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Wrappers\matrices\MatrixWrappers.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <Text Include="OpenGL Based\Basic Shaders\BasicUnlitVertexShader.txt" />
     <Text Include="OpenGL Based\Basic Shaders\BasicUntlitFragmentShader.txt" />
+    <Text Include="OpenGL Based\Basic Shaders\BasicUnlitFragmentShader.txt" />
   </ItemGroup>
 </Project>

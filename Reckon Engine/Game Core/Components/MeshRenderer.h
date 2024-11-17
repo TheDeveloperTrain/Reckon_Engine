@@ -4,7 +4,10 @@
 class MeshRenderer : public Component
 {
 public:
+	unsigned int VBO, VAO, EBO;
 	MeshRenderer();
+	void Render();
+	void Clean();
 	Mesh mesh;
 	
 };
